@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Lê Khanh</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Style riêng cho trang Contact để tối ưu form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        .btn-submit {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #3498db;
+        }
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="lythuyet.html">Lý thuyết</a></li>
+            <li><a href="baitap01.html">Sản phẩm</a></li>
+            <li><a href="baitap02.html">Đăng ký</a></li>
+            <li><a href="baitap03.html">Countdown</a></li>
+            <li><a href="contact.html">Liên hệ</a></li>
+            <li><a href="about.html">Điểm danh</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="contact-info">
+            <h1>Liên hệ với tôi</h1>
+            <p>Nếu bạn có thắc mắc về bài thi "Lập trình Web", hãy để lại lời nhắn bên dưới.</p>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="fullName">Họ và tên:</label>
+                <input type="text" id="fullName" placeholder="Nhập tên của bạn..." required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contactEmail">Email liên hệ:</label>
+                <input type="email" id="contactEmail" placeholder="example@vhu.edu.vn" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Lời nhắn:</label>
+                <textarea id="message" placeholder="Viết nội dung tại đây..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Gửi tin nhắn</button>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Xử lý sự kiện gửi form liên hệ
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('contactEmail').value;
+            
+            // Giả lập gửi tin nhắn thành công
+            alert(`Cảm ơn ${name}! Tin nhắn của bạn đã được gửi. Chúng tôi sẽ phản hồi qua email: ${email}`);
+            
+            // Reset form sau khi gửi
+            this.reset();
+        });
+    </script>
+</body>
+</html>

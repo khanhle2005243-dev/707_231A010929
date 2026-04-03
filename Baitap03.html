@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown - Lê Khanh</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="timer-box">
+        <h1 id="timer">10:00</h1>
+    </div>
+
+    <div class="logic-explanation">
+        <h3>Logic tư duy BT3:</h3>
+        <ul>
+            <li><b>Memory Leak:</b> Sử dụng <code>clearInterval()</code> ngay khi thời gian về 0 để giải phóng tài nguyên hệ thống.</li>
+            <li><b>Tối ưu CSS:</b> Khi <code>timeLeft < 60</code>, JS sẽ thêm class <code>warning</code> để kích hoạt <code>@keyframes</code> nhấp nháy đỏ trong CSS.</li>
+            <li><b>Đồng bộ Server:</b> Nếu deploy thực tế, thời gian bắt đầu nên được lấy từ API Server để tránh việc người dùng chỉnh giờ máy tính cá nhân nhằm gian lận thời gian làm bài.</li>
+        </ul>
+    </div>
+
+    <script>
+        let time = 600;
+        const display = document.getElementById('timer');
+        
+        const countdown = setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            display.innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+            
+            if(time < 60) display.style.color = "red";
+            if(time <= 0) {
+                clearInterval(countdown);
+                alert("Hết giờ!");
+            }
+            time--;
+        }, 1000);
+    </script>
+</body>
+</html>
